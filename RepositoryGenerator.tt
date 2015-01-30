@@ -63,6 +63,12 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
     }
 
+	//Delete this default constructor if using an IoC container
+	public UnitOfWork()
+	{
+		_context = new <#= efContext #>();
+	}
+	
     <#foreach(string className in classNames)
     {
         var properClassName = GetProperClassName(className);
@@ -74,10 +80,6 @@ public <#= repositoryInterfaceName + " " + className+"s"#>
     }
 
     <#}#>
-    public IApplicationRepository Applications
-    {
-        get { return new ApplicationRepository(_context); }
-    }
 
     public void Save()
     {
@@ -113,7 +115,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 {
     private readonly DbSet<TEntity> _entities;
 
-    protected Repository(AppPortalEntities context)
+    protected Repository(<#= efContext #> context)
     {
         _entities = context.Set<TEntity>();
     }
