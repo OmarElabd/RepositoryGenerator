@@ -159,7 +159,9 @@ public interface IRepository<T> where T : class
         {
             var properClassName = GetProperClassName(className);
             var repositoryName = properClassName + "Repository";
-            #>    
+            #>
+using System.Collections.Generic;
+using System.Linq;			
 using <#= targetNamespace #>;
               
 public class <#= repositoryName #> : Repository<<#= className #>>, I<#= properClassName #>Repository
@@ -174,6 +176,7 @@ public class <#= repositoryName #> : Repository<<#= className #>>, I<#= properCl
     //Override any generic method for your own custom implemention, add new repository methods to the I<#= repositoryName #>.cs file
 }
 <#+  CreateFile(repositoryName + ".cs"); #>
+using System.Collections.Generic;
 using <#= targetNamespace #>;
 
 public interface I<#= properClassName #>Repository : IRepository<<#= className #>>
