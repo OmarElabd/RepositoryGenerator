@@ -44,7 +44,7 @@ public interface IUnitOfWork : IDisposable
         var properClassName = GetProperClassName(className);
         var repositoryInterfaceName = "I" + properClassName + "Repository";
     #>
-<#= repositoryInterfaceName + " " + properClassName+"s" #> { get; }
+<#= repositoryInterfaceName + " " + getPluralClassName(className) #> { get; }
     <#
     }
     #>
@@ -74,7 +74,7 @@ public sealed class UnitOfWork : IUnitOfWork
         var properClassName = GetProperClassName(className);
         var repositoryInterfaceName =  "I" + properClassName + "Repository";
     #>
-public <#= repositoryInterfaceName + " " + properClassName+"s"#>
+public <#= repositoryInterfaceName + " " + getPluralClassName(className) #>
     {
         get { return new <#= properClassName + "Repository" #>(_context); }
     }
