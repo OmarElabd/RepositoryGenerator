@@ -2,7 +2,7 @@
 
 Repository Generator will generate an entire repository structure for you. All you need to supply a namespace which contains all your Entity Framework models and the RepositoryGenerator.tt will generate repositories for all your models, it will generate a generic repository providing you with basic functionality out of the box. A Unit of Work class will also be generated.
 
-#Usage
+## Usage
 
 Modify the RepositoryGenerator.tt file, replace the line:
 
@@ -19,7 +19,7 @@ string efContext = "DefaultModel";
 
 replace DefaultModel with the name of the class that implements the DbContext class.
 
-#Extending the Repository
+## Extending the Repository
 
 All your repositories will inherit from Repository<T> which contains generic methods, feel free
 to override any methods. To add new repository methods, please add them to the I(ClassName)Repository
