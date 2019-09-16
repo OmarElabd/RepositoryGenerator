@@ -45,6 +45,15 @@
         return activeProject;
     }
 
+	public string getPluralClassName(string classname)
+    {
+		if(classname.EndsWith("y"))
+        {
+			return string.Format("{0}ies",classname.Substring(0,classname.Length-1));
+        }
+		return string.Format("{0}s",classname);
+    }
+    
     //
     public List<CodeClass> FindClasses(Project project, string ns, string className) 
     {
